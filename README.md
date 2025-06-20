@@ -1,4 +1,4 @@
-# Desafio Técnico FADESP — Análise de Dados e Visualização
+# Desafio Técnico FADESP — Engenharia e Análise de Dados
 
 ## Objetivo
 

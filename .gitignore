@@ -7,3 +7,7 @@ __pycache__/
 *.sqlite3
 .env
 .DS_Store
+# Ignorar dados pesados
+data/*.CSV
+data/*.csv
+data/*.xlsx

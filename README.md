@@ -1,50 +1,72 @@
-# Desafio Técnico FADESP — Análise de Dados e Visualização
+# Desafio Técnico FADESP — Engenharia e Análise de Dados
 
-## Objetivo
+Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Analista de BI na FADESP.  
+O objetivo é realizar uma análise exploratória completa relacionando dados do **Censo da Educação Superior (INEP)** com os **Bolsistas de Pesquisa do CNPq**, identificando padrões e gerando insights práticos para tomada de decisão.
 
-Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Analista de BI na FADESP. O objetivo principal é realizar uma análise exploratória e criar visualizações a partir dos microdados do Censo da Educação Superior 2023, respondendo às principais perguntas de negócio de forma clara e interativa.
+---
 
-## Estrutura do Projeto
+## 📁 **Estrutura do Repositório**
 
-- **/data/**: Contém os arquivos de entrada.
-- **/notebooks/**: Notebook com toda a análise exploratória, gráficos e comentários.
-- **/scripts/**: Scripts em Python modularizados para limpeza de dados e geração de gráficos.
-- **/output/**: Pasta de saída com os gráficos salvos em PNG e o dashboard interativo em HTML.
+- **/data/** → Contém os arquivos de entrada:
+  - `MICRODADOS_CADASTRO_CURSOS_2023.CSV`
+  - `MICRODADOS_ED_SUP_IES_2023.CSV`
+  - `Relatorio_de_dados_abertos_CNPq (1º SEM 2023)(snICJ).xlsx`
+- **/notebooks/** → Notebook com toda a análise, gráficos interativos e comentários.
+- **/scripts/** → Scripts Python para carga, limpeza e organização dos dados.
+- **app.py** → Aplicação interativa com Streamlit.
+- **requirements.txt** → Lista de bibliotecas necessárias.
 
-## Como Executar
+---
 
-Instale as dependências:
+## ⚠️ **Pré-Requisitos**
+
+> ⚡ **Atenção:**  
+> Para que tudo funcione, é necessário baixar manualmente **os dois arquivos CSV do INEP** e o **Excel do CNPq** e colocar dentro da pasta `/data/` do projeto.
+
+---
+
+## 🚀 **Como Executar o Projeto**
+
+1️⃣ **Clone o repositório**
+
+```bash
+git clone https://github.com/SEU_USUARIO/desafio_tecnico_fadesp.git
+cd desafio_tecnico_fadesp
+2️⃣ (Opcional) Crie um ambiente virtual
+
+python -m venv venv
+Ative:
+
+Windows: venv\Scripts\activate
+
+Linux/Mac: source venv/bin/activate
+
+3️⃣ Instale as dependências
 
 pip install -r requirements.txt
+4️⃣ Execute o notebook
 
-Execute o notebook:
-Abra o arquivo notebooks/01_analise_visualizacao.ipynb no VS Code ou Jupyter e execute célula por célula para ver a análise completa.
+Abra o arquivo notebooks/analise_exploratoria.ipynb e rode célula por célula.
 
-Scripts
-limpeza.py
-Funções para carregar, filtrar e mapear os dados de forma limpa e reaproveitável.
+5️⃣ Ou execute a aplicação Streamlit
 
-visualizacoes.py
-Funções para criar e salvar todos os gráficos em PNG e o dashboard interativo em HTML.
-
-Principais Gráficos
-Cursos por UF (barras)
-
-Cursos por Categoria Administrativa (barras)
-
-Cursos por Organização Acadêmica (barras)
-
-Heatmap: relação entre UF e Organização Acadêmica
-
-Gráfico Interativo: distribuição por UF com Plotly
-
-Todos os gráficos estão salvos em /output/graficos e o dashboard interativo em /output/dashboard.html.
-
-## Como abrir o painel interativo
-
-Para abrir o painel interativo em Streamlit:
+## geralmente leva alguns segundos para abrir tudo
 
 streamlit run app.py
+📈 Principais Funcionalidades
+Pré-visualização de dados limpos.
 
-## geralmente leva alguns minutos para abrir tudo
+Gráficos interativos (Plotly) com análise por UF, categoria administrativa e organização acadêmica.
 
+Heatmap para identificar distribuições relevantes.
+
+Comparação cruzada entre cursos cadastrados e número de bolsistas do CNPq.
+
+Código robusto para lidar com colunas inconsistentes.
+
+✅ Observações Finais
+Não esqueça: Os arquivos originais devem estar em /data/.
+
+O projeto foi estruturado para ser modular, documentado e fácil de entender.
+
+Para executar em outro computador, basta clonar o repositório, instalar as dependências e colocar os arquivos na pasta certa.

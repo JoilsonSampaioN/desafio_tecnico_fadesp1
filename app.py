@@ -1,3 +1,10 @@
+"""
+Aplicação principal do desafio técnico FADESP.
+Este script inicializa o Streamlit, carrega os dados,
+gera os gráficos interativos e permite comparação
+entre cursos e bolsas de pesquisa.
+"""
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px

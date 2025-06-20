@@ -1,29 +1,16 @@
-version: "3.8"
-
 services:
-  postgres:
+  db:
     image: postgres:15
     restart: always
-    container_name: pg_fadesp
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: fadesp_db
     ports:
-      - "5432:5432"
+      - "5440:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-
-  app:
-    build: .
-    container_name: app_fadesp
-    depends_on:
-      - postgres
-    ports:
-      - "8501:8501"
-    volumes:
-      - .:/app
-    command: streamlit run app.py
+      - db_data:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+  db_data:
+

@@ -18,21 +18,20 @@ O objetivo é realizar uma análise exploratória completa relacionando dados do
 
 ---
 
-## ⚠️ **Pré-Requisitos**
+##  **Pré-Requisitos**
+>  **Atenção:**  
+##  Pré-requisitos
+1. Baixe o arquivo ZIP: [Link para o download](https://nuvem.cnpq.br/index.php/s/fLrSsC9wfeL8HWZ/download)
+2. Extraia o conteúdo na pasta `data/` do projeto
 
-> ⚡ **Atenção:**  
-> Para que tudo funcione, é necessário baixar manualmente **os dois arquivos CSV do INEP** e o **Excel do CNPq** e colocar dentro da pasta `/data/` do projeto.
 
----
 
-## 🚀 **Como Executar o Projeto**
+##  **Como Executar o Projeto**
 
-1️⃣ **Clone o repositório**
+1️ **Clone o repositório**
 
-```bash
 git clone https://github.com/SEU_USUARIO/desafio_tecnico_fadesp.git
 cd desafio_tecnico_fadesp
-2️⃣ (Opcional) Crie um ambiente virtual
 
 python -m venv venv
 Ative:
@@ -41,19 +40,19 @@ Windows: venv\Scripts\activate
 
 Linux/Mac: source venv/bin/activate
 
-3️⃣ Instale as dependências
+ Instale as dependências
 
 pip install -r requirements.txt
-4️⃣ Execute o notebook
+ Execute o notebook
 
 Abra o arquivo notebooks/analise_exploratoria.ipynb e rode célula por célula.
 
-5️⃣ Ou execute a aplicação Streamlit
+ Ou execute a aplicação Streamlit
 
 ## geralmente leva alguns segundos para abrir tudo
 
 streamlit run app.py
-📈 Principais Funcionalidades
+ Principais Funcionalidades
 Pré-visualização de dados limpos.
 
 Gráficos interativos (Plotly) com análise por UF, categoria administrativa e organização acadêmica.
@@ -64,7 +63,27 @@ Comparação cruzada entre cursos cadastrados e número de bolsistas do CNPq.
 
 Código robusto para lidar com colunas inconsistentes.
 
-✅ Observações Finais
+## ETL e Banco de Dados
+
+Este projeto usa **PostgreSQL** via **Docker** para armazenar os dados limpos.
+
+- O `docker-compose.yml` sobe o container do banco.
+- O script `limpeza.py` trata os dados e exporta para o PostgreSQL usando `SQLAlchemy`.
+- O esquema relacional está definido no `db_schema.sql` para consultas normalizadas.
+
+**Passos rápidos:**
+
+# Subir o banco:
+docker-compose up -d
+
+# Criar tabelas:
+psql -h localhost -U user -d fadesp_db -f db_schema.sql
+
+# Rodar ETL:
+python scripts/limpeza.py
+
+
+ Observações Finais
 Não esqueça: Os arquivos originais devem estar em /data/.
 
 O projeto foi estruturado para ser modular, documentado e fácil de entender.

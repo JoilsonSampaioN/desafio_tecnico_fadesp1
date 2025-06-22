@@ -1,91 +1,94 @@
-# Desafio Técnico FADESP — Engenharia e Análise de Dados
+# Desafio Técnico FADESP
 
-Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Analista de BI na FADESP.  
-O objetivo é realizar uma análise exploratória completa relacionando dados do **Censo da Educação Superior (INEP)** com os **Bolsistas de Pesquisa do CNPq**, identificando padrões e gerando insights práticos para tomada de decisão.
-
----
-
-## 📁 **Estrutura do Repositório**
-
-- **/data/** → Contém os arquivos de entrada:
-  - `MICRODADOS_CADASTRO_CURSOS_2023.CSV`
-  - `MICRODADOS_ED_SUP_IES_2023.CSV`
-  - `Relatorio_de_dados_abertos_CNPq (1º SEM 2023)(snICJ).xlsx`
-- **/notebooks/** → Notebook com toda a análise, gráficos interativos e comentários.
-- **/scripts/** → Scripts Python para carga, limpeza e organização dos dados.
-- **app.py** → Aplicação interativa com Streamlit.
-- **requirements.txt** → Lista de bibliotecas necessárias.
+Este repositório contém uma solução completa para o desafio técnico proposto, envolvendo engenharia de dados, análise exploratória, visualização e modelagem preditiva com dados de instituições de ensino superior e bolsas científicas no Brasil.
 
 ---
 
-##  **Pré-Requisitos**
->  **Atenção:**  
-##  Pré-requisitos
-1. Baixe o arquivo ZIP: [Link para o download](https://nuvem.cnpq.br/index.php/s/fLrSsC9wfeL8HWZ/download)
-2. Extraia o conteúdo na pasta `data/` do projeto
+## Estrutura do Projeto
 
+- **scripts/**  
+  Scripts de ETL para extração, transformação e carregamento dos dados no banco PostgreSQL.
 
+- **notebooks/**  
+  Notebooks organizados para exploração de dados, análises estatísticas, visualizações e experimentos de machine learning.
 
-##  **Como Executar o Projeto**
+- **data/**  
+  Diretório onde os arquivos CSV devem ser colocados. Para execução local, baixe os dados oficiais e extraia na pasta `data/`.
 
-1️ **Clone o repositório**
+- **docker-compose.yml**  
+  Define o ambiente do banco PostgreSQL, volumes e rede para garantir persistência e isolamento.
 
-git clone https://github.com/SEU_USUARIO/desafio_tecnico_fadesp.git
-cd desafio_tecnico_fadesp
+---
 
-python -m venv venv
-Ative:
+## Pré-Requisitos
 
-Windows: venv\Scripts\activate
+- Docker e Docker Compose instalados
+- Python 3.10+
+- Ambiente virtual configurado (opcional, mas recomendado)
 
-Linux/Mac: source venv/bin/activate
+---
 
- Instale as dependências
+## Como executar
+
+1. **Clone o repositório**
+
+   git clone https://github.com/SEU_USUARIO/desafio_tecnico_fadesp.git
+   cd desafio_tecnico_fadesp
+
+Coloque os arquivos CSV
+
+Baixe e extraia os arquivos:
+
+MICRODADOS_CADASTRO_CURSOS_2023.CSV
+
+MICRODADOS_ED_SUP_IES_2023.CSV
+
+Salve na pasta data/.
+
+Suba o banco de dados com Docker
+
+docker compose up -d
+Isso cria um container PostgreSQL, pronto para receber os dados.
+
+Crie e ative o ambiente virtual
+
+python -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+.venv\Scripts\activate     # Windows
+Instale as dependências
 
 pip install -r requirements.txt
- Execute o notebook
+Execute o ETL
 
-Abra o arquivo notebooks/analise_exploratoria.ipynb e rode célula por célula.
+python scripts/etl_postgres.py
+Isso carregará os dados em lotes no banco PostgreSQL.
 
- Ou execute a aplicação Streamlit
+Rode os notebooks
 
-## geralmente leva alguns segundos para abrir tudo
+Abra os notebooks na pasta notebooks/ para explorar as análises, gráficos, mapas e modelo preditivo.
 
-streamlit run app.py
- Principais Funcionalidades
-Pré-visualização de dados limpos.
+Principais Funcionalidades
+Extração e carga de grandes arquivos CSV em banco relacional.
 
-Gráficos interativos (Plotly) com análise por UF, categoria administrativa e organização acadêmica.
+Limpeza, normalização e padronização de informações.
 
-Heatmap para identificar distribuições relevantes.
+Análise exploratória com gráficos interativos.
 
-Comparação cruzada entre cursos cadastrados e número de bolsistas do CNPq.
+Heatmaps, distribuições e mapas geográficos.
 
-Código robusto para lidar com colunas inconsistentes.
+Regressão linear para investigar relações entre cursos e bolsas.
 
-## ETL e Banco de Dados
+Ambiente Docker para fácil replicação.
 
-Este projeto usa **PostgreSQL** via **Docker** para armazenar os dados limpos.
+Desafios e Recomendações
+A solução lida com dados extensos, sendo necessária divisão em lotes para evitar sobrecarga de memória.
 
-- O `docker-compose.yml` sobe o container do banco.
-- O script `limpeza.py` trata os dados e exporta para o PostgreSQL usando `SQLAlchemy`.
-- O esquema relacional está definido no `db_schema.sql` para consultas normalizadas.
+Algumas colunas possuem inconsistências de tipos e valores ausentes; tratamento foi realizado no ETL.
 
-**Passos rápidos:**
+Recomenda-se evoluir o modelo preditivo com mais variáveis institucionais para projeções mais precisas.
 
-# Subir o banco:
-docker-compose up -d
+Investir em padronização de bases públicas pode facilitar futuras análises.
 
-# Criar tabelas:
-psql -h localhost -U user -d fadesp_db -f db_schema.sql
+Apresentação
+Este repositório inclui uma apresentação em PDF resumindo a abordagem metodológica, os principais desafios, descobertas e recomendações para melhorar a produção científica com base nos dados analisados. O repositório se encontra dentro da pasta docs.
 
-# Rodar ETL:
-python scripts/limpeza.py
-
-
- Observações Finais
-Não esqueça: Os arquivos originais devem estar em /data/.
-
-O projeto foi estruturado para ser modular, documentado e fácil de entender.
-
-Para executar em outro computador, basta clonar o repositório, instalar as dependências e colocar os arquivos na pasta certa.

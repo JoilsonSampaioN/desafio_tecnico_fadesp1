@@ -90,5 +90,5 @@ Recomenda-se evoluir o modelo preditivo com mais variáveis institucionais para 
 Investir em padronização de bases públicas pode facilitar futuras análises.
 
 Apresentação
-Este repositório inclui uma apresentação em PDF resumindo a abordagem metodológica, os principais desafios, descobertas e recomendações para melhorar a produção científica com base nos dados analisados. O repositório se encontra dentro da pasta docs.
+Este repositório inclui uma apresentação em PDF resumindo a abordagem metodológica, os principais desafios, descobertas e recomendações para melhorar a produção científica com base nos dados analisados. O PDF se encontra dentro da pasta docs.
 
